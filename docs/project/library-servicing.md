@@ -6,7 +6,7 @@ This document provides the steps necessary after modifying a library in a servic
 
 Your first step is to determine whether or not your library has its own package. To do this, go into the root folder for the library you've made changes to. If there is a `pkg` folder there (which should have a `.pkgproj` file inside of it), your library does have its own package. If there is no `pkg` folder there, the library is the part of the shared framework. If it is, then there is nothing that needs to be done.
 
-For example, if you made changes to [Microsoft.Win32.Primitives](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Win32.Primitives), then you have a `.pkgproj`, and will have to follow the steps in this document. However, if you made changes to [System.Collections](https://github.com/dotnet/runtime/tree/master/src/libraries/System.Collections), then you don't have a `.pkgproj`, and you do not need to do any further work for servicing.
+For example, if you made changes to [Microsoft.Win32.Primitives](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Win32.Primitives), then you have a `.pkgproj`, and will have to follow the steps in this document. However, if you made changes to [System.Collections](https://github.com/dotnet/runtime/tree/master/src/libraries/System.Collections), then u don't have a `.pkgproj`, and you do not need to do any further work for servicing.
 
 ## Determine PackageVersion
 
