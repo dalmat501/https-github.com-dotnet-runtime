@@ -18,7 +18,8 @@
     <ProjectReference Include="$(PkgDir)*\*.proj" Exclude="$(PkgDir)test\*" Condition="'$(BuildAllOOBPackages)' == 'true'" />
     <ProjectReference Include="$(MSBuildThisFileDirectory)*\pkg\**\*.pkgproj" Condition="('$(BuildAllConfigurations)' == 'true' or '$(DotNetBuildFromSource)' == 'true') And '$(BuildAllOOBPackages)' == 'true'" />
     <!-- If setting BuildAllOOBPackages to false, add bellow the individual OOB packages you want to continue to build -->
-    <ProjectReference Include="$(LibrariesProjectRoot)\System.Windows.Extensions\pkg\System.Windows.Extensions.pkgproj" Condition="'$(BuildAllConfigurations)' == 'true'" />
+    <ProjectReference Include="$(LibrariesProjectRoot)\System.Diagnostics.EventLog\pkg\System.Diagnostics.EventLog.pkgproj" Condition="'$(BuildAllConfigurations)' == 'true'" />
+    <ProjectReference Include="$(PkgDir)\Microsoft.Extensions.Internal.Transport\Microsoft.Extensions.Internal.Transport.pkgproj" Condition="'$(BuildAllConfigurations)' == 'true'" />
   </ItemGroup>
 
   <!-- Need the PackageIndexFile file property from baseline.props -->

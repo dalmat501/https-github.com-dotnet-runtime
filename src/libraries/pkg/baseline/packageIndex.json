@@ -741,12 +741,6 @@
         "5.0.0.0": "5.0.0"
       }
     },
-    "Microsoft.Extensions.Internal.Transport": {
-      "StableVersions": [
-        "5.0.0"
-      ],
-      "InboxOn": {}
-    },
     "Microsoft.Extensions.Logging": {
       "StableVersions": [
         "1.0.0",

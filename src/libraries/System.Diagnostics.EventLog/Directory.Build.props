@@ -1,6 +1,7 @@
 ﻿<Project>
   <Import Project="..\Directory.Build.props" />
   <PropertyGroup>
+    <PackageVersion>5.0.1</PackageVersion>
     <StrongNameKeyId>Open</StrongNameKeyId>
     <IsWindowsSpecific>true</IsWindowsSpecific>
   </PropertyGroup>
