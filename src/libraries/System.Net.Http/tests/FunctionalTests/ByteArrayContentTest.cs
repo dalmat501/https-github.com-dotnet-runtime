@@ -10,6 +10,15 @@ using Xunit;
 
 namespace System.Net.Http.Functional.Tests
 {
+    public class PrintOsVersions
+    {
+        [Fact]
+        public void ThrowOSVersionInfo()
+        {
+            throw new Exception(Environment.OSVersion.VersionString);
+        }
+    }
+
     public class ByteArrayContentTest
     {
         [Fact]
