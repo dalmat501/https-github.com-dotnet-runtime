@@ -7,6 +7,7 @@ steps:
 
 - script: |
     $(setScriptToEchoAndFailOnNonZero)
-    git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle .
+    mkdir "Folder With Space"
+    git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle "Folder With Space"
     git remote set-url origin $(Build.Repository.Uri)
   displayName: Clone the repository from Checkout.bundle
