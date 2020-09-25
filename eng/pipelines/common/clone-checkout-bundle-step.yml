@@ -1,3 +1,6 @@
+parameters:
+  cloneFolder: ''
+
 steps:
 - checkout: none
 
@@ -5,9 +8,18 @@ steps:
   artifact: Checkout_bundle
   displayName: Download Checkout.bundle
 
-- script: |
-    $(setScriptToEchoAndFailOnNonZero)
-    mkdir "Folder With Space"
-    git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle "Folder With Space"
-    git remote set-url origin $(Build.Repository.Uri)
-  displayName: Clone the repository from Checkout.bundle
+- ${{ if neq(parameters.cloneFolder, '') }}:
+  - script: |
+      $(setScriptToEchoAndFailOnNonZero)
+      mkdir ${{ parameters.cloneFolder }}
+      chdir ${{ parameters.cloneFolder }}
+      git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle ${{ parameters.cloneFolder }}
+      git remote set-url origin $(Build.Repository.Uri)
+    displayName: Clone the repository from Checkout.bundle
+
+- ${{ if eq(parameters.cloneFolder, '') }}:
+  - script: |
+      $(setScriptToEchoAndFailOnNonZero)
+      git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle .
+      git remote set-url origin $(Build.Repository.Uri)
+    displayName: Clone the repository from Checkout.bundle

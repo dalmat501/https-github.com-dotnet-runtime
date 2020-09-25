@@ -12,6 +12,7 @@ parameters:
   stagedBuild: false
   strategy: ''
   pool: ''
+  cloneFolder: ''
 
   # arcade-specific parameters
   condition: true
@@ -37,6 +38,7 @@ jobs:
     crossrootfsDir: ${{ parameters.crossrootfsDir }}
     stagedBuild: ${{ parameters.stagedBuild }}
     strategy: ${{ parameters.strategy }}
+    cloneFolder: ${{ parameters.cloneFolder }}
     pool: ${{ parameters.pool }}
 
     # arcade-specific parameters

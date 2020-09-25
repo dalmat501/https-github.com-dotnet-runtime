@@ -12,6 +12,7 @@ parameters:
   variables: {}
   pool: ''
   platform: ''
+  cloneFolder: ''
   testBuildPlatforms: []
 
 jobs:
@@ -29,6 +30,7 @@ jobs:
     stagedBuild: ${{ parameters.stagedBuild }}
     variables: ${{ parameters.variables }}
     pool: ${{ parameters.pool }}
+    cloneFolder: ${{ parameters.cloneFolder }}
 
 - template: /eng/pipelines/libraries/build-job.yml
   parameters:

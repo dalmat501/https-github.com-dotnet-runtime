@@ -17,6 +17,7 @@ parameters:
   stagedBuild: false
   testGroup: ''
   timeoutInMinutes: ''
+  cloneFolder: ''
   variables: {}
 
 ### Product build
@@ -33,6 +34,7 @@ jobs:
     enableMicrobuild: true
     stagedBuild: ${{ parameters.stagedBuild }}
     pool: ${{ parameters.pool }}
+    cloneFolder: ${{ parameters.cloneFolder }}
     condition: ${{ parameters.condition }}
 
     # Compute job name from template parameters
@@ -115,6 +117,10 @@ jobs:
     - ${{ if ne(parameters.testGroup, 'innerloop') }}:
       - name: clrBuildPALTestsBuildArg
         value: '-paltests '
+
+    - ${{ if ne(${{ parameters.cloneFolder }}, '') }}: 
+      - name: buildSourceDir
+        value: $(Build.SourcesDirectory)/${{ parameters.cloneFolder }}
 
     - ${{ parameters.variables }}
 
