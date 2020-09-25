@@ -118,7 +118,7 @@ jobs:
       - name: clrBuildPALTestsBuildArg
         value: '-paltests '
 
-    - ${{ if ne(${{ parameters.cloneFolder }}, '') }}: 
+    - ${{ if ne(parameters.cloneFolder, '') }}: 
       - name: buildSourceDir
         value: $(Build.SourcesDirectory)/${{ parameters.cloneFolder }}
 
