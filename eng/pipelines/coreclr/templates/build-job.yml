@@ -122,7 +122,7 @@ jobs:
       value: "$(Build.SourcesDirectory)"
     - ${{ if ne(parameters.cloneFolder, '') }}: 
       - name: buildSourceDir
-        value: "$(Build.SourcesDirectory)\\${{ parameters.cloneFolder }}"
+        value: '$(Build.SourcesDirectory)/"${{ parameters.cloneFolder }}"'
 
     - ${{ parameters.variables }}
 
