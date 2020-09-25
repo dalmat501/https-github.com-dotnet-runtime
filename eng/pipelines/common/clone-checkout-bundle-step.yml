@@ -11,9 +11,9 @@ steps:
 - ${{ if ne(parameters.cloneFolder, '') }}:
   - script: |
       $(setScriptToEchoAndFailOnNonZero)
-      mkdir ${{ parameters.cloneFolder }}
-      chdir ${{ parameters.cloneFolder }}
-      git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle ${{ parameters.cloneFolder }}
+      mkdir "${{ parameters.cloneFolder }}"
+      chdir "${{ parameters.cloneFolder }}"
+      git clone $(Pipeline.Workspace)/Checkout_bundle/Checkout.bundle
       git remote set-url origin $(Build.Repository.Uri)
     displayName: Clone the repository from Checkout.bundle
 
