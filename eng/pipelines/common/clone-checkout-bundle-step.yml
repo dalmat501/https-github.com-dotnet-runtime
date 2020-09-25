@@ -8,7 +8,7 @@ steps:
   artifact: Checkout_bundle
   displayName: Download Checkout.bundle
 
-- ${{ if neq(parameters.cloneFolder, '') }}:
+- ${{ if ne(parameters.cloneFolder, '') }}:
   - script: |
       $(setScriptToEchoAndFailOnNonZero)
       mkdir ${{ parameters.cloneFolder }}
