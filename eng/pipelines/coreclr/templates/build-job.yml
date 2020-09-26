@@ -124,9 +124,9 @@ jobs:
       - name: buildSourceDir
         value: '$(Build.SourcesDirectory)/"${{ parameters.cloneFolder }}"'
       - name: buildProductRootFolderPath
-        value: '$(buildSourceDir)/artifacts/bin/coreclr/$(osGroup).$(archType).$(buildConfigUpper)'
+        value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/bin/coreclr/$(osGroup).$(archType).$(buildConfigUpper)"'
       - name: nativeTestArtifactRootFolderPath
-        value: '$(buildSourceDir)/artifacts/tests/coreclr/obj/$(osGroup).$(archType).$(buildConfigUpper)'
+        value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/tests/coreclr/obj/$(osGroup).$(archType).$(buildConfigUpper)"'
 
     - ${{ parameters.variables }}
 
