@@ -123,6 +123,8 @@ jobs:
     - ${{ if ne(parameters.cloneFolder, '') }}: 
       - name: buildSourceDir
         value: '$(Build.SourcesDirectory)/"${{ parameters.cloneFolder }}"'
+      - name: buildProductRootFolderPath
+        value: '$(Build.SourcesDirectory)//"${{ parameters.cloneFolder }}"/artifacts/bin/coreclr/$(osGroup).$(archType).$(buildConfigUpper)'
 
     - ${{ parameters.variables }}
 
