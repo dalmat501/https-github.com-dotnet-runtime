@@ -127,6 +127,8 @@ jobs:
         value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/bin/coreclr/$(osGroup).$(archType).$(buildConfigUpper)"'
       - name: nativeTestArtifactRootFolderPath
         value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/tests/coreclr/obj/$(osGroup).$(archType).$(buildConfigUpper)"'
+      - name: publishLogsArtifactPrefix
+        value: '"$(publishLogsArtifactPrefix)/${{ parameters.cloneFolder }}"'        
 
     - ${{ parameters.variables }}
 
