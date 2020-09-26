@@ -121,7 +121,7 @@ jobs:
     - name: buildSourceDir
       value: "$(Build.SourcesDirectory)"
     - name: publishLogsDir
-      value: '"$(Build.SourcesDirectory)/artifacts/log"'        
+      value: $(Build.SourcesDirectory)/artifacts/log
       
     - ${{ if ne(parameters.cloneFolder, '') }}: 
       - name: buildSourceDir
