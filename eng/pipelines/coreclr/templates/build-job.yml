@@ -127,8 +127,8 @@ jobs:
         value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/bin/coreclr/$(osGroup).$(archType).$(buildConfigUpper)"'
       - name: nativeTestArtifactRootFolderPath
         value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/tests/coreclr/obj/$(osGroup).$(archType).$(buildConfigUpper)"'
-      - name: publishLogsArtifactPrefix
-        value: '"$(publishLogsArtifactPrefix)/${{ parameters.cloneFolder }}"'        
+      - name: publishLogsDir
+        value: '"$(Build.SourcesDirectory)/${{ parameters.cloneFolder }}/artifacts/log"'        
 
     - ${{ parameters.variables }}
 
@@ -284,7 +284,7 @@ jobs:
     - task: PublishPipelineArtifact@1
       displayName: Publish Logs
       inputs:
-        targetPath: $(buildSourceDir)/artifacts/log
+        targetPath: $(publishLogsDir)
         artifactName: '$(publishLogsArtifactPrefix)_$(osGroup)$(osSubgroup)_$(archType)_$(buildConfig)'
       continueOnError: true
       condition: always()
