@@ -485,7 +485,7 @@ jobs:
         ${{ if eq(parameters.passPlatforms, true) }}:
           platforms: ${{ parameters.platforms }}
         helixQueueGroup: ${{ parameters.helixQueueGroup }}
-        cloneFolder: 'FolderSpace'
+        cloneFolder: 'Folder Space'
         ${{ insert }}: ${{ parameters.jobParameters }}
 
 # Windows arm
