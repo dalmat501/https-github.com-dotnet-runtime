@@ -3701,7 +3701,7 @@ protected:
 
     bool impMethodInfo_hasRetBuffArg(CORINFO_METHOD_INFO* methInfo);
 
-    GenTree* impFixupCallStructReturn(GenTreeCall* call, CORINFO_CLASS_HANDLE retClsHnd);
+    GenTree* impFixupCallStructReturn(GenTreeCall* call, CORINFO_CLASS_HANDLE retClsHnd, CorInfoCallConv callConv);
 
     GenTree* impFixupStructReturnType(GenTree* op, CORINFO_CLASS_HANDLE retClsHnd);
 
@@ -9363,7 +9363,8 @@ public:
     // Calculates if this method's entry point should have the same calling
     // convention as an unmanaged instance method variant of the standard calling convention.
     // (only used on applicable platforms)
-    bool compMethodIsNativeInstanceMethod(CORINFO_METHOD_INFO* mthInfo);
+    bool compMethodIsNativeInstanceMethod(const CORINFO_METHOD_INFO* mthInfo) const;
+    bool compMethodIsNativeInstanceMethod(CorInfoCallConv callConv) const;
 
 #ifdef DEBUG
     // Components used by the compiler may write unit test suites, and

@@ -1991,9 +1991,14 @@ unsigned Compiler::compGetTypeSize(CorInfoType cit, CORINFO_CLASS_HANDLE clsHnd)
     return sigSize;
 }
 
-bool Compiler::compMethodIsNativeInstanceMethod(CORINFO_METHOD_INFO* mthInfo)
+bool Compiler::compMethodIsNativeInstanceMethod(const CORINFO_METHOD_INFO* mthInfo) const
 {
-    return mthInfo->args.getCallConv() == CORINFO_CALLCONV_THISCALL;
+    return compMethodIsNativeInstanceMethod(mthInfo->args.getCallConv());
+}
+
+bool Compiler::compMethodIsNativeInstanceMethod(CorInfoCallConv callConv) const
+{
+    return callConv == CORINFO_CALLCONV_THISCALL;
 }
 
 #ifdef DEBUG

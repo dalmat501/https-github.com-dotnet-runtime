@@ -8846,7 +8846,7 @@ DONE_CALL:
             if (varTypeIsStruct(callRetTyp))
             {
                 // Need to treat all "split tree" cases here, not just inline candidates
-                call = impFixupCallStructReturn(call->AsCall(), sig->retTypeClass);
+                call = impFixupCallStructReturn(call->AsCall(), sig->retTypeClass, sig->callConv);
             }
 
             // TODO: consider handling fatcalli cases this way too...?
@@ -9045,12 +9045,14 @@ var_types Compiler::impImportJitTestLabelMark(int numArgs)
 //  Arguments:
 //    call       -  GT_CALL GenTree node
 //    retClsHnd  -  Class handle of return type of the call
+//    callConv   -  Call convention for the call
 //
 //  Return Value:
 //    Returns new GenTree node after fixing struct return of call node
 //
-GenTree* Compiler::impFixupCallStructReturn(GenTreeCall* call, CORINFO_CLASS_HANDLE retClsHnd)
+GenTree* Compiler::impFixupCallStructReturn(GenTreeCall* call, CORINFO_CLASS_HANDLE retClsHnd, CorInfoCallConv callConv)
 {
+    // Now you can ask `compMethodIsNativeInstanceMethod` here.
     if (!varTypeIsStruct(call))
     {
         return call;
