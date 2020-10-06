@@ -2,8 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 using Xunit;
@@ -15,7 +17,24 @@ namespace System.Net.Http.Functional.Tests
         [Fact]
         public void ThrowOSVersionInfo()
         {
-            throw new Exception(Environment.OSVersion.VersionString);
+            string versionString;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Process proc = Process.Start(new ProcessStartInfo()
+                {
+                    FileName = "uname",
+                    Arguments = "-r",
+                    RedirectStandardOutput = true
+                });
+                proc.WaitForExit();
+                versionString = proc.StandardOutput.ReadToEnd().TrimEnd('\n');
+            }
+            else
+            {
+                versionString = Environment.OSVersion.VersionString;
+            }
+
+            throw new Exception(versionString);
         }
     }
 
